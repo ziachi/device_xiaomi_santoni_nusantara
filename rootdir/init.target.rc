@@ -195,7 +195,7 @@ on charger
     load_system_props
     setprop sys.usb.configfs 1
     start qcom-post-boot
-    setprop persist.sys.usb.config mass_storage
+    setprop persist.sys.usb.config mtp,adb
     start vendor.hvdcp_opti
     start vendor.power_off_alarm
     start thermal-engine
