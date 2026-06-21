@@ -280,3 +280,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/santoni/BoardConfigVendor.mk
+
+# Disable artifact path requirements (missing mainline repos)
+DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
