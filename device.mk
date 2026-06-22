@@ -554,3 +554,5 @@ ART_BUILD_TARGET_DEBUG := false
 # build the ART for host in non-debug mode
 ART_BUILD_HOST_NDEBUG := true
 ART_BUILD_HOST_DEBUG := false
+# Release signing keys
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/releasekey
