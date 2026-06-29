@@ -47,12 +47,18 @@ lunch nad_santoni-userdebug
 ALLOW_MISSING_DEPENDENCIES=true DISABLE_ARTIFACT_PATH_REQUIREMENTS=true mka nad -j$(nproc)
 ```
 
+**Required local patch (apply after repo sync):**
+
+`packages/apps/Launcher3/Android.mk` — Remove `LOCAL_PRODUCT_MODULE` and `LOCAL_REQUIRED_MODULES` from Launcher3 and Launcher3QuickStep sections. Without this, the launcher APK is silently skipped. See [`patches/launcher3-quickstep-fix.patch`](patches/launcher3-quickstep-fix.patch) for details.
+
 ## Docs
 
 - [CHANGELOG.md](CHANGELOG.md) — Full fix history
+- [patches/](patches/) — Required local patches for repo sync
 - [docs/bug-analysis/](docs/bug-analysis/) — Root cause analysis for major bugs
   - [graphics-hal-bootloop.md](docs/bug-analysis/graphics-hal-bootloop.md)
   - [missing-launcher.md](docs/bug-analysis/missing-launcher.md)
+  - [launcher3-silently-skipped.md](docs/bug-analysis/launcher3-silently-skipped.md)
   - [systemui-screendecorations-crash.md](docs/bug-analysis/systemui-screendecorations-crash.md)
 
 ## Device Picture

@@ -1,0 +1,18 @@
+--- a/packages/apps/Launcher3/Android.mk
++++ b/packages/apps/Launcher3/Android.mk
+ 
+ Launcher3QuickStep section (around line 212):
+ Remove these lines from the Launcher3QuickStep block:
+ - LOCAL_PRODUCT_MODULE := true
+ - LOCAL_REQUIRED_MODULES := privapp_whitelist_com.android.launcher3
+ - LOCAL_REQUIRED_MODULES += privapp_whitelist_com.android.launcher3-ext.xml
+ 
+ Also remove from the Launcher3 block (around line 111):
+ - LOCAL_PRODUCT_MODULE := true
+ - LOCAL_REQUIRED_MODULES := privapp_whitelist_com.android.launcher3
+ - LOCAL_REQUIRED_MODULES += privapp_whitelist_com.android.launcher3-ext.xml
+ 
+ Reason: privapp_whitelist_com.android.launcher3 module does not exist in
+ Nusantara EOL branch 10. ALLOW_MISSING_DEPENDENCIES=true causes the
+ build system to silently skip the entire module when required modules
+ are missing, resulting in no launcher APK in the final ZIP.

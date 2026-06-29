@@ -4,16 +4,21 @@
 
 | # | Commit | Change |
 |---|--------|--------|
-| #1 | `f1292bad` | Add Launcher3QuickStep to fix missing launcher (initial attempt) |
+| #1 | `f1292bad` | Add Launcher3QuickStep to PRODUCT_PACKAGES (initial attempt — silently skipped) |
 | #2 | `3ae05389` | Set maintainer name to ziachi |
 | #3 | `2eee7a98` | Fix SystemUI ScreenDecorations crash (rounded_corner_radius overlay) |
-| #4 | `aef6a5f9` | Use Launcher3 instead of Launcher3QuickStep for legacy device |
+| #4 | `aef6a5f9` | Switch to Launcher3 (still skipped — same root cause) |
+| #5 | `3c6f75d1` | Update docs |
+| #6 | (pending) | Revert to Launcher3QuickStep + document Android.mk fix for silent skip |
 
 **Framework patch (separate repo):**
 
 | Commit | Change |
 |--------|--------|
 | `763aca2a` | Hardcode FLAG_SECURE bypass (`isSecureLocked()` → always false) for scrcpy/ADB display |
+
+**Required local patch (applied after repo sync):**
+- `packages/apps/Launcher3/Android.mk`: Remove `LOCAL_PRODUCT_MODULE` + `LOCAL_REQUIRED_MODULES` from Launcher3 and Launcher3QuickStep sections. See `patches/launcher3-quickstep-fix.patch`.
 
 ## v1 — Initial Bring-up (22 Jun 2026)
 
