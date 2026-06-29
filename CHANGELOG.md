@@ -1,5 +1,20 @@
 # Changelog — Nusantara EOL (santoni)
 
+## v2 — Bug Fixes & FLAG_SECURE Bypass (29 Jun 2026)
+
+| # | Commit | Change |
+|---|--------|--------|
+| #1 | `f1292bad` | Add Launcher3QuickStep to fix missing launcher (initial attempt) |
+| #2 | `3ae05389` | Set maintainer name to ziachi |
+| #3 | `2eee7a98` | Fix SystemUI ScreenDecorations crash (rounded_corner_radius overlay) |
+| #4 | `aef6a5f9` | Use Launcher3 instead of Launcher3QuickStep for legacy device |
+
+**Framework patch (separate repo):**
+
+| Commit | Change |
+|--------|--------|
+| `763aca2a` | Hardcode FLAG_SECURE bypass (`isSecureLocked()` → always false) for scrcpy/ADB display |
+
 ## v1 — Initial Bring-up (22 Jun 2026)
 
 | # | Commit | Change |

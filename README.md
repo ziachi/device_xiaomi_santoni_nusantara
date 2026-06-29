@@ -7,8 +7,10 @@
 | ROM | NusantaraProject EOL (Android 10) |
 | Branch | `nad-10-dev` |
 | Build type | UNOFFICIAL |
+| Maintainer | ziachi |
 | Signed | Custom release keys (CN=ziachi) |
 | Security patch | System: 2023-06-05 · Vendor: 2020-12-05 |
+| FLAG_SECURE | Disabled (framework patch for scrcpy/ADB) |
 
 ## Spec Sheet
 
@@ -35,6 +37,7 @@
 | [device_xiaomi_santoni_nusantara](https://github.com/ziachi/device_xiaomi_santoni_nusantara/tree/nad-10-dev) | `nad-10-dev` |
 | [vendor_xiaomi_santoni_nusantara](https://github.com/ziachi/vendor_xiaomi_santoni_nusantara/tree/10) | `10` |
 | [kernel_xiaomi_santoni_nusantara](https://github.com/ziachi/kernel_xiaomi_santoni_nusantara/tree/luuvy-4.9) | `luuvy-4.9` |
+| [android_frameworks_base_nusantara](https://github.com/ziachi/android_frameworks_base_nusantara/tree/nad-10-dev-santoni) | `nad-10-dev-santoni` |
 
 ## Build
 
@@ -49,6 +52,8 @@ ALLOW_MISSING_DEPENDENCIES=true DISABLE_ARTIFACT_PATH_REQUIREMENTS=true mka nad 
 - [CHANGELOG.md](CHANGELOG.md) — Full fix history
 - [docs/bug-analysis/](docs/bug-analysis/) — Root cause analysis for major bugs
   - [graphics-hal-bootloop.md](docs/bug-analysis/graphics-hal-bootloop.md)
+  - [missing-launcher.md](docs/bug-analysis/missing-launcher.md)
+  - [systemui-screendecorations-crash.md](docs/bug-analysis/systemui-screendecorations-crash.md)
 
 ## Device Picture
 
