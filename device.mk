@@ -559,4 +559,4 @@ PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/releasekey
 
 # Launcher
 PRODUCT_PACKAGES += \
-    Launcher3QuickStep
+    Launcher3
