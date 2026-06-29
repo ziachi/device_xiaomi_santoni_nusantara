@@ -556,3 +556,7 @@ ART_BUILD_HOST_NDEBUG := true
 ART_BUILD_HOST_DEBUG := false
 # Release signing keys
 PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/releasekey
+
+# Launcher
+PRODUCT_PACKAGES += \
+    Launcher3QuickStep
