@@ -20,11 +20,11 @@ $(call inherit-product, device/xiaomi/santoni/full_santoni.mk)
 $(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
 
 PRODUCT_DEVICE := santoni
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Redmi 4X
+PRODUCT_BRAND := google
+PRODUCT_MODEL := Pixel 9
 PRODUCT_NAME := nad_santoni
 BOARD_VENDOR := Xiaomi
-PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_MANUFACTURER := Google
 
 # OFFICIAL TAG
 NAD_BUILD_TYPE := UNOFFICIAL
@@ -37,7 +37,7 @@ TARGET_SCREEN_WIDTH := 720
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Build fingerprint
-BUILD_FINGERPRINT := google/coral/coral:11/RQ1A.210105.003/7005429:user/release-keys
+BUILD_FINGERPRINT := google/tokay/tokay:15/AP4A.250305.002/12695432:user/release-keys
 BUILD_DESCRIPTION := santoni-user 7.1.2 N2G47H V9.5.10.0.NAMMIFD release-keys
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
