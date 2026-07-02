@@ -60,3 +60,7 @@ allow init firmware_file:filesystem getattr;
 allow init vendor_data_file:file lock;
 allow init hal_audio_default:binder call;
 allow init platform_app:binder call;
+
+# Spectrum bridge
+set_prop(init, luuvy_prop)
+set_prop(init, spectrum_prop)

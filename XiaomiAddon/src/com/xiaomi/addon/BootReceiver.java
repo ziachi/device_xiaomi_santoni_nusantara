@@ -20,6 +20,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.SystemProperties;
 import androidx.preference.PreferenceManager;
 import android.provider.Settings;
 import com.xiaomi.addon.preferences.VibratorStrengthPreference;
@@ -33,7 +34,7 @@ public class BootReceiver extends BroadcastReceiver implements Utils {
     public void onReceive(Context context, Intent intent) {
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-		
+
         VibratorStrengthPreference.restore(context);
         VibratorCallStrengthPreference.restore(context);
         VibratorNotifStrengthPreference.restore(context);
@@ -66,6 +67,13 @@ public class BootReceiver extends BroadcastReceiver implements Utils {
 
         FileUtils.setValue(DeviceSettings.USB_FASTCHARGE_PATH, Settings.Secure.getInt(context.getContentResolver(),
                 DeviceSettings.PREF_USB_FASTCHARGE, 0));
+
+        // Spectrum: sync Secure Settings value to system property
+        String spectrumProfile = Settings.Secure.getString(context.getContentResolver(),
+                DeviceSettings.PREF_SPECTRUM_PROFILE);
+        if (spectrumProfile != null && !spectrumProfile.isEmpty()) {
+            SystemProperties.set(DeviceSettings.SPECTRUM_PROP, spectrumProfile);
+        }
     }
 
 }

@@ -22,10 +22,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemProperties;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
 import androidx.preference.Preference;
+import androidx.preference.ListPreference;
 import androidx.preference.PreferenceCategory;
 
 import com.xiaomi.addon.kcal.KCalSettingsActivity;
@@ -49,11 +51,23 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String PREF_USB_FASTCHARGE = "fastcharge";
     public static final String USB_FASTCHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
 
+    // Spectrum
+    public static final String PREF_SPECTRUM_PROFILE = "spectrum_profile";
+    public static final String SPECTRUM_PROP = "persist.spectrum.profile";
+
+    private static final String[] SPECTRUM_SUMMARIES = {
+        null, // will be loaded from resources
+        null,
+        null,
+        null
+    };
+
     private VibratorStrengthPreference mVibratorStrength;
     private VibratorCallStrengthPreference mVibratorCallStrength;
     private VibratorNotifStrengthPreference mVibratorNotifStrength;
     private Preference mKcal;
     private SecureSettingSwitchPreference mFastcharge;
+    private SecureSettingListPreference mSpectrumProfile;
     private static Context mContext;
 
     @Override
@@ -91,17 +105,48 @@ public class DeviceSettings extends PreferenceFragment implements
             getPreferenceScreen().removePreference(findPreference(CATEGORY_FASTCHARGE));
         }
 
+        // Spectrum profile
+        mSpectrumProfile = (SecureSettingListPreference) findPreference(PREF_SPECTRUM_PROFILE);
+        if (mSpectrumProfile != null) {
+            String currentProfile = SystemProperties.get(SPECTRUM_PROP, "0");
+            mSpectrumProfile.setValue(currentProfile);
+            updateSpectrumSummary(currentProfile);
+            mSpectrumProfile.setOnPreferenceChangeListener(this);
+        }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
         final String key = preference.getKey();
         switch (key) {
-
+            case PREF_SPECTRUM_PROFILE:
+                String profile = (String) value;
+                SystemProperties.set(SPECTRUM_PROP, profile);
+                updateSpectrumSummary(profile);
+                break;
             default:
                 break;
         }
         return true;
+    }
+
+    private void updateSpectrumSummary(String profile) {
+        if (mSpectrumProfile == null) return;
+        int idx;
+        try {
+            idx = Integer.parseInt(profile);
+        } catch (NumberFormatException e) {
+            idx = 0;
+        }
+        int[] summaryResIds = {
+            R.string.spectrum_balance_summary,
+            R.string.spectrum_performance_summary,
+            R.string.spectrum_battery_summary,
+            R.string.spectrum_gaming_summary
+        };
+        if (idx >= 0 && idx < summaryResIds.length) {
+            mSpectrumProfile.setSummary(summaryResIds[idx]);
+        }
     }
 
     private boolean isAppNotInstalled(String uri) {

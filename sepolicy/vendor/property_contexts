@@ -12,3 +12,7 @@ ctl.stop                   u:object_r:ctl_stop_prop:s0
 
 # Dolby
 persist.vendor.dolby.loglevel                 u:object_r:vendor_dolby_loglevel_prop:s0
+
+# Spectrum
+persist.spectrum.profile    u:object_r:spectrum_prop:s0
+persist.luuvy.profile       u:object_r:luuvy_prop:s0

@@ -104,4 +104,18 @@
     <!-- Label for feature switch -->
     <string name="switch_bar_off">Off</string>
 
+
+    <!-- Spectrum Kernel Manager -->
+    <string name="spectrum_title">Spectrum Kernel Manager</string>
+    <string name="spectrum_summary">Select kernel performance profile</string>
+    <string name="spectrum_profile_title">Kernel Profile</string>
+    <string name="spectrum_tile_label">Spectrum</string>
+    <string name="spectrum_balance">Balance</string>
+    <string name="spectrum_balance_summary">Default balanced profile. Good mix of performance and battery life.</string>
+    <string name="spectrum_performance">Performance</string>
+    <string name="spectrum_performance_summary">Higher CPU frequencies and aggressive scaling for better performance.</string>
+    <string name="spectrum_battery">Battery</string>
+    <string name="spectrum_battery_summary">Lower CPU frequencies and conservative scaling to save battery.</string>
+    <string name="spectrum_gaming">Gaming</string>
+    <string name="spectrum_gaming_summary">Maximum CPU frequencies and most aggressive scaling for gaming.</string>
 </resources>
