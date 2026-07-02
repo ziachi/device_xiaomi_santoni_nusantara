@@ -44,3 +44,30 @@
 | #2 | `b490bf01` | sepolicy: remove duplicate hal_perfcallback_hwservice |
 | #3 | `0cda3250` | device.mk: fix dexpreopt duplicate compiler filter |
 | #4 | `f8e795b0` | BoardConfig: disable artifact path requirements |
+
+## v4 — 02-07-2026
+
+### Prebuilt Luuvy Kernel + Spectrum Profiles
+
+**Kernel:**
+- Switched to prebuilt Luuvy C.4.0 EOL kernel (`Image.gz-dtb`)
+- No longer building kernel from source — faster build time
+- Requires local patches to `BoardConfigKernel.mk` + `kernel.mk` (see README)
+
+**Spectrum Profile Manager:**
+- Added `init.spectrum.rc` with 4 profiles:
+  - Balance (schedutil, GPU 216-475MHz)
+  - Performance (performance governor, GPU 300-475MHz)
+  - Battery (powersave, GPU 216-450MHz)
+  - Gaming (performance governor, GPU 375-475MHz)
+- Bridges: `persist.spectrum.profile` (0-3) ↔ `persist.luuvy.profile`
+- Franco Kernel Manager compatible
+
+**XiaomiAddon:**
+- Added Spectrum QS Tile (cycle profiles from Quick Settings)
+- Added Spectrum preference in XiaomiAddon settings
+- BootReceiver syncs profile on boot
+
+**SEPolicy:**
+- Added `spectrum_prop` + `luuvy_prop` property types
+- system_app + init allowed to set/get

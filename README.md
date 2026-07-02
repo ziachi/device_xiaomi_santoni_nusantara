@@ -139,3 +139,10 @@ Output: `out/target/product/santoni/Nusantara-EOL-santoni-*-UNOFFICIAL-*.zip`
 ## Device Picture
 
 ![Redmi 4X](https://cdn.tgdd.vn/Products/Images/42/99145/xiaomi-redmi-4x-400-400x460.png "Redmi 4X")
+
+### Local Patches Required (v4+)
+When using prebuilt kernel, these LOCAL patches are needed on the build tree (not committed):
+
+1. **`vendor/nusantara/config/BoardConfigKernel.mk`** — Comment out `TARGET_KERNEL_SOURCE :=` inside `ifneq ($(TARGET_PREBUILT_KERNEL),)` block (line ~45). Keeps kernel source available for soong header generation.
+
+2. **`vendor/nusantara/build/tasks/kernel.mk`** — Add `ifneq ($(TARGET_PREBUILT_KERNEL),)` check BEFORE `ifeq "$(wildcard $(KERNEL_SRC))" ""` (line ~115). Prioritizes prebuilt kernel even when source directory exists.
